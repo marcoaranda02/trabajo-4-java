@@ -10,7 +10,7 @@ public class AlmacenLineas {
             interesados.add(modulo);
         }
     //agrega una al almacen y se le "grita" que ha habido cambios y que los interesados deben reaccionar
-        public void agregarLinea(String linea) {
+        public void agregarLineaNotificando(String linea) {
             lineas.add(linea);
             // Aquí es donde "grita"
             for (EscuchadorDeDatos e : interesados) {
@@ -21,5 +21,22 @@ public class AlmacenLineas {
         public String obtenerUltima() {
             return lineas.get(lineas.size() - 1);
         }
+
+        public int size() {
+            return lineas.size();
+        }
+        
+        public String get(int i) {
+            return lineas.get(i);
+        }
+        
+        public void insertarEnSilencio(int i, String linea) {
+            lineas.add(i, linea);
+        }
+        
+        public String eliminarEnSilencio(int i) {
+            return lineas.remove(i);
+}
+
     
 }
