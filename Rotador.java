@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 class  Rotador implements EscuchadorDeDatos {
+    //poosee 2 almacenes, el de entrada que son los datos previos a rotar
     private AlmacenLineas origen;
+    //otro almacen que son los elementos ya rotados que se "gritaran"
     private AlmacenLineas destino;
 
     public Rotador(AlmacenLineas o, AlmacenLineas d) {
@@ -10,30 +12,35 @@ class  Rotador implements EscuchadorDeDatos {
         this.destino = d;
     }
 
+
+    //cuando el almacen principal llame a que reaccione, este respondera con:
     @Override
     public void reaccionarNuevoCambio() {
-        // 1. "Voy a ver": El componente reacciona y extrae el dato más reciente [cite: 511]
+        //obtendra la linea más "reciente" del almacen original para procesarla
         String linea = origen.obtenerUltima();
-        System.out.println("Procesador: Recibí la línea, generando rotaciones...");
+        System.out.println("Rotando..."+linea);
         
-        // 2. Procesa el dato
+        //preocesa la rotación
         generarRotaciones(linea);
     }
 
+
     private void generarRotaciones(String linea) {
-        // Dividimos la línea en palabras (limpiando espacios extra)
+        //separa el String en palabras y las guarda por separado utilizando una función regex que busca los espacios en blanco
         String[] palabrasArray = linea.trim().split("\\s+");
+        //se convierte en un arryalist para manipular más fácil
         ArrayList<String> palabras = new ArrayList<>(Arrays.asList(palabrasArray));
 
-        // El sistema KWIC requiere todas las rotaciones circulares de la línea 
+        //se genera n cantidad de rotaciones, dependiendo la cantidad de palabras en el arreglo
         for (int i = 0; i < palabras.size(); i++) {
-            // Unimos las palabras actuales para formar una línea rotada
+            //Se captura la rotación actual y se une el arrelglo con espacios en blanco
             String lineaRotada = String.join(" ", palabras);
             
-            // 3. "Mando al almacén": Al agregarla al destino, este almacén "gritará" [cite: 512]
+           //se le dice al "segundo" almacen que se a hecho una rotación para que este le grite a los nuevos interesados
+           //dentro de agregar linea que es un metodo de almacen, "grita" a los interesados de ese almacen
             destino.agregarLinea(lineaRotada);
             
-            // Rotamos circularmente: quitamos la primera palabra y la ponemos al final 
+            //se toma la primera palabra y se manda al final
             String primera = palabras.remove(0);
             palabras.add(primera);
         }

@@ -8,13 +8,13 @@ class Alfabetizador implements EscuchadorDeDatos {
     public Alfabetizador(AlmacenLineas origen) {
         this.origen = origen;
     }
-
+//en el almacen de la clase rotador, se grita y este al escuchar responde con:
     @Override
     public void reaccionarNuevoCambio() {
-        // "Voy a ver": Extrae la rotación que el procesador acaba de gritar
+        //extraigo la ultima linea recibida en ese momento
         String nuevaRotacion = origen.obtenerUltima();
         
-        // Procesa: Inserción manual para mantener el orden alfabético
+        //se llama al metodo
         insertarOrdenadamente(nuevaRotacion);
         
         // Muestra el progreso
@@ -22,18 +22,19 @@ class Alfabetizador implements EscuchadorDeDatos {
     }
 
     private void insertarOrdenadamente(String nuevaLinea) {
+        //iniciamos el indice en 0
         int i = 0;
-        // Buscamos la posición donde nuevaLinea sea menor que la línea en la lista
+        //mientras que la lista sea mayor a 0 y la nueva linea sea mayor a la anterior en orden alfabenico se incrmeenta el indice, cuando este se supere sale de while
         while (i < todasLasLineasOrdenadas.size() && 
                nuevaLinea.compareToIgnoreCase(todasLasLineasOrdenadas.get(i)) > 0) {
             i++;
         }
-        // Insertamos en el índice encontrado
+        // se inserta la nueva linea, por ejemplo si fue mayor, al no incrementar el indice al inicio, si incrementa, pues despues de i elemento
         todasLasLineasOrdenadas.add(i, nuevaLinea);
     }
 
     private void imprimirEstadoActual() {
-        System.out.println("\n--- Índice KWIC (Ordenado por Inserción) ---");
+        System.out.println("Índice KWIC ACTUAL:\n");
         for (String l : todasLasLineasOrdenadas) {
             System.out.println(l);
         }

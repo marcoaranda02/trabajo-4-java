@@ -8,14 +8,12 @@ public class LectorArchivo {
     public LectorArchivo(AlmacenLineas almacen) {
         this.almacen = almacen;
     }
-
+//recibe la ruta del archivo y lo separa en lineas para mandarselo al almacen mientras las lineas no sean vacias
     public void leer(String rutaArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 if (!linea.trim().isEmpty()) {
-                    // Al agregar la línea, el almacén notificará automáticamente
-                    // a todos los "escuchadores" registrados.
                     almacen.agregarLinea(linea);
                 }
             }
