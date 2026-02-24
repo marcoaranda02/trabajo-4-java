@@ -1,4 +1,4 @@
 //Interfaz comun que tendrian todos los escuchadores 
-interface EscuchadorDeDatos{
+public interface EscuchadorDeDatos{
     void reaccionarNuevoCambio();
 }

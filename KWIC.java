@@ -10,10 +10,16 @@
         //recibe el almacen destino para escuchar las rotaciones y ordenarlas
         Alfabetizador alfabetizador = new Alfabetizador(almacenDestino);
 
+        //se crea una instancia de la clase output y se imprimen los resultados
+        //Output output = new Output(almacenDestino);
+
         //el almacen rotador se suscirbe al original (lineas originales)
         almacenOriginal.suscribir(rotador);
         //el alfabetizador se suscribir al almacen destino (lineas que proporciona el rotador)
         almacenDestino.suscribir(alfabetizador);
+
+        //el output se suscribe al almacen destino
+        //almacenDestino.suscribir(output);
 
         //Se crea una instancia de la clase lector y se leen
         LectorArchivo lector = new LectorArchivo(almacenOriginal);
@@ -24,5 +30,3 @@
         output.imprimir();
     }
 } 
-    
-
