@@ -14,7 +14,7 @@ public class LectorArchivo {
             String linea;
             while ((linea = br.readLine()) != null) {
                 if (!linea.trim().isEmpty()) {
-                    almacen.agregarLinea(linea);
+                    almacen.agregarLineaNotificando(linea);
                 }
             }
         } catch (IOException e) {
