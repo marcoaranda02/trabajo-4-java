@@ -38,7 +38,7 @@ class  Rotador implements EscuchadorDeDatos {
             
            //se le dice al "segundo" almacen que se a hecho una rotación para que este le grite a los nuevos interesados
            //dentro de agregar linea que es un metodo de almacen, "grita" a los interesados de ese almacen
-            destino.agregarLinea(lineaRotada);
+            destino.agregarLineaNotificando(lineaRotada);
             
             //se toma la primera palabra y se manda al final
             String primera = palabras.remove(0);
