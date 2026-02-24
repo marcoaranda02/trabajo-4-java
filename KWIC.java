@@ -18,6 +18,10 @@
         //Se crea una instancia de la clase lector y se leen
         LectorArchivo lector = new LectorArchivo(almacenOriginal);
         lector.leer("datos.txt");
+
+        //se crea una instancia de la clase output y se imprimen los resultados
+        Output output = new Output(almacenDestino);
+        output.imprimir();
     }
 } 
     
