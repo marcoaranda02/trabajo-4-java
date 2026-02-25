@@ -13,7 +13,7 @@ class Output{
     //}
 
     public void imprimir() {
-        System.out.println("===== ÍNDICE KWIC =====\n");
+        System.out.println("===== ÍNDICE KWIC =====");
         for (int i = 0; i < lines.size(); i++) {
             System.out.println(lines.get(i));
         }

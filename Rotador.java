@@ -20,6 +20,8 @@ class  Rotador implements EscuchadorDeDatos {
         String linea = origen.obtenerUltima();
         System.out.println("Rotando..."+linea);
         
+
+    
         //preocesa la rotación
         generarRotaciones(linea);
     }
@@ -31,6 +33,8 @@ class  Rotador implements EscuchadorDeDatos {
         //se convierte en un arryalist para manipular más fácil
         ArrayList<String> palabras = new ArrayList<>(Arrays.asList(palabrasArray));
 
+
+if(validarRepetidas(palabras)){
         //se genera n cantidad de rotaciones, dependiendo la cantidad de palabras en el arreglo
         for (int i = 0; i < palabras.size(); i++) {
             //Se captura la rotación actual y se une el arrelglo con espacios en blanco
@@ -44,5 +48,28 @@ class  Rotador implements EscuchadorDeDatos {
             String primera = palabras.remove(0);
             palabras.add(primera);
         }
+        }
+        else {
+            destino.agregarLineaNotificando(linea);
+        }
     }
+
+
+private boolean validarRepetidas(ArrayList<String> palabras) {
+    //si solo es una palabra
+    if ( palabras.size() <= 1) {
+        return false; 
+    }
+//se obtiene la primera palabra del arreglo
+    String primera = palabras.get(0);
+    for (int i = 1; i < palabras.size(); i++) {
+        ///si se encuentra alguna palabra diferente a la primera
+        if (!primera.equals(palabras.get(i))) {
+            return true; 
+        }
+    }
+    
+    //salimos del ciclo
+    return false; 
+}
 }
