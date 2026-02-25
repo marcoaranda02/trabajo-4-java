@@ -35,6 +35,8 @@ class  Rotador implements EscuchadorDeDatos {
         for (int i = 0; i < palabras.size(); i++) {
             //Se captura la rotación actual y se une el arrelglo con espacios en blanco
             String lineaRotada = String.join(" ", palabras);
+
+            //AGREGAR CONSIDERACIÓN DE NO ROTAR PALABRAS IGUALES
             
            //se le dice al "segundo" almacen que se a hecho una rotación para que este le grite a los nuevos interesados
            //dentro de agregar linea que es un metodo de almacen, "grita" a los interesados de ese almacen
