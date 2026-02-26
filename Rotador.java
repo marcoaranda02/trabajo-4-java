@@ -18,9 +18,6 @@ class  Rotador implements EscuchadorDeDatos {
     public void reaccionarNuevoCambio() {
         //obtendra la linea más "reciente" del almacen original para procesarla
         String linea = origen.obtenerUltima();
-        System.out.println("Rotando..."+linea);
-        
-
     
         //preocesa la rotación
         generarRotaciones(linea);
@@ -35,6 +32,7 @@ class  Rotador implements EscuchadorDeDatos {
 
 
 if(validarRepetidas(palabras)){
+            System.out.println("Rotando..."+linea);
         //se genera n cantidad de rotaciones, dependiendo la cantidad de palabras en el arreglo
         for (int i = 0; i < palabras.size(); i++) {
             //Se captura la rotación actual y se une el arrelglo con espacios en blanco
@@ -43,13 +41,14 @@ if(validarRepetidas(palabras)){
            //se le dice al "segundo" almacen que se a hecho una rotación para que este le grite a los nuevos interesados
            //dentro de agregar linea que es un metodo de almacen, "grita" a los interesados de ese almacen
             destino.agregarLineaNotificando(lineaRotada);
-            
+            //le dice al alfabetizador que reaccione            
             //se toma la primera palabra y se manda al final
             String primera = palabras.remove(0);
             palabras.add(primera);
         }
         }
         else {
+            System.out.println("Enviando Directamente..."+linea);
             destino.agregarLineaNotificando(linea);
         }
     }
@@ -68,8 +67,7 @@ private boolean validarRepetidas(ArrayList<String> palabras) {
             return true; 
         }
     }
-    
-    //salimos del ciclo
+    //si ninguna palabra fue diferente se regresa un falso
     return false; 
 }
 }
